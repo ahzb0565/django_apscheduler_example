@@ -130,3 +130,20 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "standard": {
+            "format": "{asctime} {filename}[line:{lineno}] {levelname} {message}",
+            "datefmt": "%a, %d %b %Y %H:%M:%S",
+            "style": "{",
+        },
+    },
+    "handlers": {
+        "console": {"level": "INFO", "class": "logging.StreamHandler", "formatter": "standard"},
+    },
+    "loggers": {
+        "background_task": {"handlers": ["console",], "propagate": True, "level": "DEBUG"},
+    },
+}
